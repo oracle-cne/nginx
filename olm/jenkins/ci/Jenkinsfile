@@ -1,0 +1,14 @@
+@Library('olcne-pipeline') _
+import com.oracle.olcne.pipeline.BranchPattern
+
+def majorminor='1.26'
+def patch='3'
+def version="${majorminor}.${patch}"
+
+imagePipeline(
+        branchPattern: new BranchPattern(master: 'oracle/release/.*', feature: 'feature/.*'),
+	containers: ["container-registry.oracle.com/olcne/nginx:$version": "olcne/nginx:$version"],
+        architectures: ['x86_64', 'aarch64'],
+	platforms: ['ol9'],
+	buildScript: "./build.sh ${VERSION} ${majorminor}",
+)
