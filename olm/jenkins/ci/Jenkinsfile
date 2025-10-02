@@ -10,5 +10,5 @@ imagePipeline(
 	containers: ["container-registry.oracle.com/olcne/nginx:$version": "olcne/nginx:$version"],
         architectures: ['x86_64', 'aarch64'],
 	platforms: ['ol9'],
-	buildScript: "./build.sh ${VERSION} ${majorminor}",
+	buildScript: "./build.sh ${version} ${majorminor}",
 )
